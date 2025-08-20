@@ -222,7 +222,7 @@
                 sections.forEach(s => s.classList.toggle('active', '#' + s.id === target));
                 navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === target));
                 mobileMenu.classList.add('hidden');
-                window.scrollTo(0, 0);
+                // window.scrollTo(0, 0);
             }
             navTriggers.forEach(trigger => {
                 trigger.addEventListener('click', e => {
