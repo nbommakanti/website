@@ -53,7 +53,7 @@
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Header & Navigation -->
-    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <header id="header" class="bg-white sticky top-0 z-50 shadow-sm">
     <div class="container mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
         <!-- Logo -->
@@ -76,7 +76,7 @@
         </nav>
 
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-button" class="md:hidden relative z-50 focus:outline-none cursor-pointer">
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -85,13 +85,8 @@
         </div>
     </div>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay"
-        class="fixed inset-0 bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40 md:hidden"></div>
-
     <!-- Mobile Menu -->
-    <div id="mobile-menu"
-        class="overflow-hidden max-h-0 md:hidden px-6 pb-4 bg-white shadow-lg transition-all duration-500 ease-in-out relative z-50">
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white">
         <a href="#home" class="nav-link nav-trigger block py-2 text-gray-600 hover:text-blue-600">Home</a>
         <a href="#about" class="nav-link nav-trigger block py-2 text-gray-600 hover:text-blue-600">About</a>
         <a href="#conditions" class="nav-link nav-trigger block py-2 text-gray-600 hover:text-blue-600">Conditions</a>
@@ -103,26 +98,9 @@
     <script>
     const menuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
-    const overlay = document.getElementById("mobile-menu-overlay");
 
     menuButton.addEventListener("click", () => {
-        const isOpen = mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== "0px";
-
-        if (isOpen) {
-        mobileMenu.style.maxHeight = "0";
-        overlay.classList.add("opacity-0", "pointer-events-none");
-        overlay.classList.remove("opacity-100", "pointer-events-auto");
-        } else {
-        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
-        overlay.classList.remove("opacity-0", "pointer-events-none");
-        overlay.classList.add("opacity-100", "pointer-events-auto");
-        }
-    });
-
-    overlay.addEventListener("click", () => {
-        mobileMenu.style.maxHeight = "0";
-        overlay.classList.add("opacity-0", "pointer-events-none");
-        overlay.classList.remove("opacity-100", "pointer-events-auto");
+        mobileMenu.classList.toggle("hidden");
     });
     </script>
 
