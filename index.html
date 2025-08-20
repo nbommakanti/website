@@ -77,16 +77,22 @@
 
         <!-- Mobile Menu Button -->
         <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Hamburger -->
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+            <!-- X Icon (hidden by default) -->
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>
         </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white">
+    <div id="mobile-menu" class="max-h-0 overflow-hidden md:hidden px-6 pb-4 bg-white transition-all duration-300 ease-in-out">
         <a href="#home" class="nav-link nav-trigger block py-2 text-gray-600 hover:text-blue-600">Home</a>
         <a href="#about" class="nav-link nav-trigger block py-2 text-gray-600 hover:text-blue-600">About</a>
         <a href="#conditions" class="nav-link nav-trigger block py-2 text-gray-600 hover:text-blue-600">Conditions</a>
@@ -98,9 +104,20 @@
     <script>
     const menuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const closeIcon = document.getElementById("close-icon");
 
     menuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+        // Toggle max-height for smooth slide
+        if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== "0px") {
+        mobileMenu.style.maxHeight = "0px";
+        } else {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+        }
+
+        // Toggle icons
+        hamburgerIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
     });
     </script>
 
