@@ -208,35 +208,37 @@
             </div>
         </section>
 
-
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const navTriggers = document.querySelectorAll('.nav-trigger');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+                const sections = document.querySelectorAll('.section');
+                const navLinks = document.querySelectorAll('.nav-link');
+                const navTriggers = document.querySelectorAll('.nav-trigger');
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
 
-            function showSection(hash) {
-                const target = (hash === '' || hash === '#') ? '#home' : hash;
-                sections.forEach(s => s.classList.toggle('active', '#' + s.id === target));
-                navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === target));
-                mobileMenu.classList.add('hidden');
-                // window.scrollTo(0, 0);
-            }
-            navTriggers.forEach(trigger => {
-                trigger.addEventListener('click', e => {
-                e.preventDefault();
-                const targetHash = trigger.getAttribute('href');
-                history.pushState(null, null, targetHash);
-                showSection(targetHash);
+                function showSection(hash) {
+                    const target = (hash === '' || hash === '#') ? '#home' : hash;
+                    sections.forEach(s => s.classList.toggle('active', '#' + s.id === target));
+                    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === target));
+                    mobileMenu.classList.add('hidden');
+                }
+                navTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', e => {
+                        e.preventDefault();
+                        const targetHash = trigger.getAttribute('href');
+                        // This line is now the only place that manipulates the URL and history
+                        history.pushState(null, null, targetHash);
+                        showSection(targetHash);
+                    });
                 });
-            });
-            window.addEventListener('popstate', () => showSection(window.location.hash));
-            showSection(window.location.hash || '#home');
+                window.addEventListener('popstate', () => showSection(window.location.hash));
+                
+                // The fixed line. It reads the current hash but doesn't create a new one.
+                const currentHash = window.location.hash;
+                showSection(currentHash || '#home');
 
-            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            document.getElementById("year").textContent = new Date().getFullYear();
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                document.getElementById("year").textContent = new Date().getFullYear();
             });
 
             // PubMed fetch
