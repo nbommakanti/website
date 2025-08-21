@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Research & Publications | Dr. Nikhil Bommakanti</title>
+    <meta name="description" content="Explore Dr. Bommakanti's research publications and clinical articles in retinal care and vitreoretinal surgery.">
+    <meta name="keywords" content="retinal research, publications, clinical articles, vitreoretinal surgery research, PubMed, Bommakanti">
+    <meta name="author" content="Dr. Nikhil Bommakanti">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/003366/FFFFFF?text=B" type="image/png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header will be loaded here -->
+    <div id="header-container"></div>
+
+    <main>
+        <!-- Publications Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-blue-900">Research & Publications</h1>
+                </div>
+
+                <!-- Filter buttons -->
+                <div class="flex justify-center gap-4 mb-8">
+                    <button id="filter-all" class="filter-btn px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-600 transition active">All</button>
+                    <button id="filter-pubmed" class="filter-btn px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-blue-600 transition">Research Papers</button>
+                    <button id="filter-google" class="filter-btn px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-blue-600 transition">Clinical Articles</button> 
+                </div>
+
+                <div id="loading" class="text-center py-8">
+                    <p class="text-gray-600">Loading publications...</p>
+                </div>
+
+                <div id="pubmed-list" class="space-y-8 max-w-4xl mx-auto hidden">
+                    <div id="pubmed-results" class="space-y-8"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- Set active page for navigation -->
+    <script>window.activePage = 'publications';</script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/publications.js"></script>
+</body>
+</html>
